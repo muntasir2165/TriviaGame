@@ -4,8 +4,8 @@ var gameInfo = {"correctAnswerTotal": 0,
 	"incorrectAnswerTotal": 0,
 	"triviaArray": [],
 	"currentQuestionObject": {},
-	"timePerQuestion": 5,
-	"timeLeft": 5,
+	"timePerQuestion": 15,
+	"timeLeft": 15,
 	"intervalTimerId": 0
 };
 
@@ -14,8 +14,8 @@ function initializeGameInfo() {
 	"incorrectAnswerTotal": 0,
 	"triviaArray": [],
 	"currentQuestionObject": {},
-	"timePerQuestion": 5,
-	"timeLeft": 5,
+	"timePerQuestion": 15,
+	"timeLeft": 15,
 	"intervalTimerId": 0
 	}
 }
@@ -148,7 +148,7 @@ function displayTimeLeft(text) {
 }
 
 function resetTimer() {
-	gameInfo.timeLeft = 5;
+	gameInfo.timeLeft = 15;
 }
 
 function triviaQuestion() {
@@ -249,7 +249,8 @@ function triviaQuestion() {
 		// console.log("Executing the displayAnswerChoices() function");
 		var answerChoiceArray = wrongAnswerChoiceArray.slice();
 		answerChoiceArray.push(rightAnswer);
-		// console.log(answerChoiceArray);
+		// console.log the right answer (for debugging and perhaps cheating purposes!)
+		console.log(rightAnswer);
 		
 		var shuffledAnswerChoiceArray = shuffle(answerChoiceArray);
 
@@ -259,7 +260,7 @@ function triviaQuestion() {
 			var answerButton = $("<button>");
 			answerButton.addClass("answer-choice btn btn-info");
 			answerButton.attr("data-answer", answer);
-			answerButton.text(answer);
+			answerButton.html(answer);
 			answerChoicesContainer.append(answerButton);
 			answerChoicesContainer.append($("<br>")).append($("<br>"));
 		});
@@ -271,9 +272,13 @@ function evaluateClickedAnswer() {
 	$(".answer-choice").on("click", function(){
 		displayTimeLeft("-");
 		var answer = $(this).attr("data-answer");
-		if (answer === gameInfo.rightAnswer) {
+		console.log("answer: " + answer);
+		// console.log(gameInfo["currentQuestionObject"]["correct_answer"]);
+		if (answer === gameInfo["currentQuestionObject"]["correct_answer"]) {
+			// console.log("Correct Answer!");
 			incrementCorrectAnswerTotalCount();
 		} else {
+			// console.log("Incorrect Answer!");
 			incrementIncorrectAnswerTotalCount();
 		}
 		updateGameStatistics();
