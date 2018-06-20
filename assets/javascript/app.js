@@ -76,6 +76,7 @@ function startTrivia() {
 	var triviaType = "multiple";
 	triviaQuestionUrl = "https://opentdb.com/api.php?amount="+ numberOfQuestions + "&difficulty=" + difficulty + "&type=" + triviaType;
 	// console.log(triviaQuestionUrl);
+	// search the Open Trivia Database (https://opentdb.com/) for a list of trivia questions that match the selected parameter criteria
 	$.ajax({
 		url: triviaQuestionUrl,
 		success: function(result) {
