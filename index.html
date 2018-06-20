@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+	<head>
+
+		<meta charset="UTF-8">
+	 	<title>Trivia Game</title>
+	 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Favicon for the webpage -->
+	 	<link rel="icon" href="assets/images/favicon.png" type="image/jpeg" sizes="16x16">
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+		<!-- Font Awesome icon library -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+	<body id="body">
+
+		<div class="container text-center">
+
+			<div id="game-title" class="row mt-2">
+				<div class="col-md-8 offset-md-2 offset-md-right-2">
+					<h1>Trivia Game</h1>
+				</div>
+			</div>
+
+			<div class="row mt-2">
+				<div class="col-md-2 offset-md-5 offset-md-right-5">
+					<button class="btn" id="start-game">Start Game</button>
+				</div>
+			</div>
+
+
+			<div id="timer-container" class="row mt-5">
+				<div class="col-md-4 offset-md-4 offset-md-right-4">
+					Time Remaining: <span id="timer"></span>
+				</div>
+			</div>
+
+			<div id="game-statistics" class="row mt-5">
+				<div class="col-md-3 offset-md-1">
+					Correct Answers: <span id="correct-answer-total"></span>
+				</div>
+				<div class="col-md-4">
+					Questions Remaining: <span id="questions-remaining"></span>
+				</div>
+				<div class="col-md-3 offset-md-right-1">
+					Incorrect Answers: <span id="incorrect-answer-total"></span>
+				</div>
+			</div>
+
+			<div class="row mt-5">
+				<div class="col-md-8 offset-md-2 offset-md-right-2">
+					<div id="game-feedback-container"></div>
+				</div>
+			</div>
+
+			<div class="row mt-5">
+				<div class="col-md-4 offset-md-4 offset-md-right-4">
+					<div id="question-container"></div>
+				</div>
+			</div>
+
+			<div class="row mt-5">
+				<div class="col-md-6 offset-md-3 offset-md-right-3">
+					<div id="answer-choices-container"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Load the associated JavaScript files -->
+		<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+	</body>
+
+</html>
