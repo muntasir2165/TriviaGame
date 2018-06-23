@@ -14,8 +14,8 @@ var gameInfo = {"correctAnswerTotal": 0,
 	"unansweredTotal": 0,
 	"triviaArray": [],
 	"currentQuestionObject": {},
-	"timePerQuestion": 15,
-	"timeLeft": 15,
+	"timePerQuestion": 10,
+	"timeLeft": 10,
 	"intervalTimerId": 0
 };
 
@@ -25,8 +25,8 @@ function initializeGameInfo() {
 	"unansweredTotal": 0,
 	"triviaArray": [],
 	"currentQuestionObject": {},
-	"timePerQuestion": 15,
-	"timeLeft": 15,
+	"timePerQuestion": 10,
+	"timeLeft": 10,
 	"intervalTimerId": 0
 	}
 }
@@ -88,7 +88,7 @@ function updateGameStatistics() {
 }
 
 function startTrivia() {
-	var numberOfQuestions = 5;
+	var numberOfQuestions = 10;
 	var difficulty = "easy";
 	var triviaType = "multiple";
 	triviaQuestionUrl = "https://opentdb.com/api.php?amount="+ numberOfQuestions + "&difficulty=" + difficulty + "&type=" + triviaType;
