@@ -7,7 +7,7 @@
 
 body {
 	/*  Background fallback in case of IE8 & down, or in case video doesn't load, such as with slower connections  */
-	background: url(../images/background.png) center center no-repeat fixed #464646;
+	background: url(../images/background.jpg) center center no-repeat fixed #464646;
 
     /*This is what makes the background image rescale based on the container's size
     Use vendor prefixes to support different browsers*/
@@ -16,7 +16,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
 
-    color: #ffffff;
+    color: #000000;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 

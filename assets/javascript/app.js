@@ -1,3 +1,12 @@
+$(document).ready(function() {
+	$("#start-game").on("click", function(){
+		displayStartButton(false);
+		displayGameInfo(true);
+		startTrivia();
+		console.log("Game Started!");
+	});
+});
+
 // object tracking the game state, current trivia question and game statistics
 // every property inside the object is initialized to 0, empty string, or []
 var gameInfo = {"correctAnswerTotal": 0,
@@ -21,15 +30,6 @@ function initializeGameInfo() {
 	"intervalTimerId": 0
 	}
 }
-
-$(document).ready(function() {
-	$("#start-game").on("click", function(){
-		displayStartButton(false);
-		displayGameInfo(true);
-		startTrivia();
-		console.log("Game Started!");
-	});
-});
 
 function displayStartButton(condition) {
 	var visibility;
@@ -189,7 +189,7 @@ function triviaQuestion() {
 		answerChoicesContainer.empty(); 
 		$.each(shuffledAnswerChoiceArray, function (index, answer) {
 			var answerButton = $("<button>");
-			answerButton.addClass("answer-choice btn btn-info");
+			answerButton.addClass("answer-choice btn btn-warning");
 			answerButton.attr("data-answer", answer);
 			answerButton.html(answer);
 			answerChoicesContainer.append(answerButton);
@@ -226,24 +226,24 @@ function incrementUnAnsweredTotalCount() {
 	gameInfo["unansweredTotal"]++;
 }
 
-	// Fisher-Yates (aka Knuth) Shuffle algorithm implementation to shuffle trivia question answer choices
-	// Copied from stackoverflow post: 
-	// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-	function shuffle(array) {
-	  var currentIndex = array.length, temporaryValue, randomIndex;
+// Fisher-Yates (aka Knuth) Shuffle algorithm implementation to shuffle trivia question answer choices
+// Copied from stackoverflow post: 
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(array) {
+	var currentIndex = array.length, temporaryValue, randomIndex;
 
-	  // While there remain elements to shuffle...
-	  while (0 !== currentIndex) {
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
 
-	    // Pick a remaining element...
-	    randomIndex = Math.floor(Math.random() * currentIndex);
-	    currentIndex -= 1;
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
 
-	    // And swap it with the current element.
-	    temporaryValue = array[currentIndex];
-	    array[currentIndex] = array[randomIndex];
-	    array[randomIndex] = temporaryValue;
-	  }
-
-	  return array;
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
 	}
+
+	return array;
+}
