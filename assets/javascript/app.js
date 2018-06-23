@@ -65,6 +65,21 @@ function displayGameFeedback(condition, feedback) {
 	}
 }
 
+function inGameFeedback(questionFeedback, correctAnswer) {
+	switch(questionFeedback) {
+    case "correct":
+        displayGameFeedback(true, "Correct! It is: " + correctAnswer);
+        break;
+    case "incorrect":
+        displayGameFeedback(true, "Wrong! The correct answer is: " + correctAnswer);
+        break;
+    case "unanswered":
+        displayGameFeedback(true, "Unanswered. The correct answer is: " + correctAnswer);
+        break;
+	}
+	setTimeout(displayGameFeedback, 5  * 1000, false);
+}
+
 function updateGameStatistics() {
 	$("#correct-answer-total").text(gameInfo["correctAnswerTotal"]);
 	$("#questions-remaining").text(gameInfo["triviaArray"].length);
@@ -125,6 +140,7 @@ function countDownTimer() {
 	} else {
 		displayTimeLeft("-");
 		incrementUnAnsweredTotalCount();
+		inGameFeedback("unanswered", gameInfo["currentQuestionObject"]["correct_answer"]);
 		playGame();
 	}
 }
@@ -151,13 +167,13 @@ function triviaQuestion() {
 	// console.log("Executing the triviaQuestion() function");
 	if (gameInfo["triviaArray"].length > 0) {
 		gameInfo["currentQuestionObject"] = gameInfo["triviaArray"].shift();
-		// console.log(gameInfo["currentQuestionObject"]);
 		displayTrivia(gameInfo["currentQuestionObject"]);
 	} else {
 		displayGameInfo(false);
 		displayGameFeedback(true, "Correct Answers: " + gameInfo.correctAnswerTotal + "; Unanswered: " + gameInfo.unansweredTotal + "; Incorrect Answers: " + gameInfo.incorrectAnswerTotal);
 		initializeGameInfo();
 		displayStartButton(true);
+		stopTimer();
 	}
 }
 
@@ -173,7 +189,6 @@ function triviaQuestion() {
 		var questionContainer = $("#question-container");
 		// questionContainer.empty();
 		questionContainer.html(question);
-		// question.append(gameInfo.firstNumber + gameInfo.operator + gameInfo.secondNumber);
 	}
 
 	function displayAnswerChoices(wrongAnswerChoiceArray, rightAnswer) {
@@ -206,8 +221,10 @@ function evaluateClickedAnswer() {
 		console.log("answer: " + answer);
 		if (answer === gameInfo["currentQuestionObject"]["correct_answer"]) {
 			incrementCorrectAnswerTotalCount();
+			inGameFeedback("correct", gameInfo["currentQuestionObject"]["correct_answer"]);
 		} else {
 			incrementIncorrectAnswerTotalCount();
+			inGameFeedback("incorrect", gameInfo["currentQuestionObject"]["correct_answer"]);
 		}
 		updateGameStatistics();
 		playGame();
