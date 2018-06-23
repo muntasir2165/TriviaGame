@@ -171,9 +171,12 @@ function triviaQuestion() {
 	} else {
 		displayGameInfo(false);
 		displayGameFeedback(true, "Correct Answers: " + gameInfo.correctAnswerTotal + "; Unanswered: " + gameInfo.unansweredTotal + "; Incorrect Answers: " + gameInfo.incorrectAnswerTotal);
-		initializeGameInfo();
-		displayStartButton(true);
 		stopTimer();
+		initializeGameInfo();
+		// displayStartButton(true);
+		// display the start button after 3 seconds that the last game 
+		// statistics were up for display
+		setTimeout(displayStartButton, 3  * 1000, true);
 	}
 }
 
@@ -218,7 +221,6 @@ function evaluateClickedAnswer() {
 	$(".answer-choice").on("click", function(){
 		displayTimeLeft("-");
 		var answer = $(this).attr("data-answer");
-		console.log("answer: " + answer);
 		if (answer === gameInfo["currentQuestionObject"]["correct_answer"]) {
 			incrementCorrectAnswerTotalCount();
 			inGameFeedback("correct", gameInfo["currentQuestionObject"]["correct_answer"]);
