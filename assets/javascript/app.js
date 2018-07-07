@@ -43,16 +43,16 @@ function displayStartButton(condition) {
 }
 
 function displayGameInfo(condition) {
-		var visibility;
-		if (condition === true) {
-			visibility = "visible";
-		} else {
-			visibility = "hidden";
-		}
-		$("#timer-container").attr("style", "visibility:" + visibility);
-		$("#game-statistics").attr("style", "visibility:" + visibility);
-		$("#question-container").attr("style", "visibility:" + visibility);
-		$("#answer-choices-container").attr("style", "visibility:" + visibility);
+	var visibility;
+	if (condition === true) {
+		visibility = "visible";
+	} else {
+		visibility = "hidden";
+	}
+	$("#timer-container").attr("style", "visibility:" + visibility);
+	$("#game-statistics").attr("style", "visibility:" + visibility);
+	$("#question-container").attr("style", "visibility:" + visibility);
+	$("#answer-choices-container").attr("style", "visibility:" + visibility);
 }
 
 function displayGameFeedback(condition, feedback) {
@@ -180,42 +180,42 @@ function triviaQuestion() {
 	}
 }
 
-	// display trivia question on the screen
-	function displayTrivia(questionObject) {
-		// console.log("Executing the displayTrivia() function");
-		displayQuestion(questionObject["question"]);
-		displayAnswerChoices(questionObject["incorrect_answers"], questionObject["correct_answer"]);
-	}
+// display trivia question on the screen
+function displayTrivia(questionObject) {
+	// console.log("Executing the displayTrivia() function");
+	displayQuestion(questionObject["question"]);
+	displayAnswerChoices(questionObject["incorrect_answers"], questionObject["correct_answer"]);
+}
 
-	function displayQuestion(question) {
-		// console.log("Executing the displayQuestion() function");
-		var questionContainer = $("#question-container");
-		// questionContainer.empty();
-		questionContainer.html(question);
-	}
+function displayQuestion(question) {
+	// console.log("Executing the displayQuestion() function");
+	var questionContainer = $("#question-container");
+	// questionContainer.empty();
+	questionContainer.html(question);
+}
 
-	function displayAnswerChoices(wrongAnswerChoiceArray, rightAnswer) {
-		// console.log("Executing the displayAnswerChoices() function");
-		var answerChoiceArray = wrongAnswerChoiceArray.slice();
-		answerChoiceArray.push(rightAnswer);
-		// console.log the right answer (for debugging and perhaps cheating purposes!)
-		console.log(rightAnswer);
-		
-		var shuffledAnswerChoiceArray = shuffle(answerChoiceArray);
+function displayAnswerChoices(wrongAnswerChoiceArray, rightAnswer) {
+	// console.log("Executing the displayAnswerChoices() function");
+	var answerChoiceArray = wrongAnswerChoiceArray.slice();
+	answerChoiceArray.push(rightAnswer);
+	// console.log the right answer (for debugging and perhaps cheating purposes!)
+	console.log(rightAnswer);
+	
+	var shuffledAnswerChoiceArray = shuffle(answerChoiceArray);
 
-		var answerChoicesContainer = $("#answer-choices-container");
-		answerChoicesContainer.empty(); 
-		$.each(shuffledAnswerChoiceArray, function (index, answer) {
-			var answerButton = $("<button>");
-			answerButton.addClass("answer-choice btn btn-warning");
-			answerButton.attr("data-answer", answer);
-			answerButton.html(answer);
-			answerChoicesContainer.append(answerButton);
-			answerChoicesContainer.append($("<br>")).append($("<br>"));
-		});
+	var answerChoicesContainer = $("#answer-choices-container");
+	answerChoicesContainer.empty(); 
+	$.each(shuffledAnswerChoiceArray, function (index, answer) {
+		var answerButton = $("<button>");
+		answerButton.addClass("answer-choice btn btn-warning");
+		answerButton.attr("data-answer", answer);
+		answerButton.html(answer);
+		answerChoicesContainer.append(answerButton);
+		answerChoicesContainer.append($("<br>")).append($("<br>"));
+	});
 
-		evaluateClickedAnswer();
-	}
+	evaluateClickedAnswer();
+}
 
 function evaluateClickedAnswer() {
 	$(".answer-choice").on("click", function(){
